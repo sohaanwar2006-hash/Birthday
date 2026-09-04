@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday, Soha ✨ | 06.09.2026</title>
+
+  <!-- Google Fonts: Cormorant Garamond & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+            serif: ['Cormorant Garamond', 'serif'],
+          },
+          colors: {
+            obsidian: '#07080c',
+            roseGlow: '#fb7185',
+            softGold: '#fde047',
+          },
+          animation: {
+            'float-slow': 'float 5s ease-in-out infinite',
+            'flicker': 'candleFlicker 0.18s infinite alternate',
+            'pulse-soft': 'pulseSoft 3s ease-in-out infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' },
+            },
+            candleFlicker: {
+              '0%': { transform: 'scale(1) rotate(-1.5deg)', opacity: '0.9' },
+              '100%': { transform: 'scale(1.1) rotate(1.5deg)', opacity: '1' }
+            },
+            pulseSoft: {
+              '0%, 100%': { opacity: '0.3', transform: 'scale(1)' },
+              '50%': { opacity: '0.6', transform: 'scale(1.06)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .glass-box {
+      background: rgba(18, 20, 29, 0.6);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(12px);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .glass-card:hover {
+      border-color: rgba(251, 113, 133, 0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px -10px rgba(251, 113, 133, 0.3);
+    }
+    .romantic-glow {
+      text-shadow: 0 0 30px rgba(251, 113, 133, 0.45), 0 0 60px rgba(244, 63, 94, 0.2);
+    }
+  </style>
+</head>
+
+<body class="bg-obsidian text-slate-100 font-sans antialiased selection:bg-rose-500 selection:text-white min-h-screen flex flex-col justify-between overflow-x-hidden relative">
+
+  <!-- Interactive Celestial & Heart Background -->
+  <canvas id="starfield" class="fixed inset-0 pointer-events-none z-0"></canvas>
+
+  <!-- Ambient Glow Blobs -->
+  <div class="fixed top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-rose-500/15 rounded-full blur-[140px] pointer-events-none animate-pulse-soft z-0"></div>
+  <div class="fixed bottom-10 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
+
+  <!-- Music Soundscape Toggle -->
+  <header class="fixed top-5 right-5 z-50">
+    <button id="sound-btn" onclick="toggleSound()" class="flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-box border border-white/10 hover:border-rose-400/40 text-xs tracking-wider uppercase transition-all duration-300">
+      <span class="w-2 h-2 rounded-full bg-slate-500" id="sound-dot"></span>
+      <span id="sound-label" class="text-slate-300 text-[11px] font-medium tracking-widest">Ambient: Off</span>
+    </button>
+  </header>
+
+  <!-- Content Stages -->
+  <main class="relative z-10 flex-1 flex items-center justify-center p-5 max-w-2xl mx-auto w-full">
+
+    <!-- ================= STAGE 1: INTIMATE PORTAL ================= -->
+    <section id="stage-1" class="transition-all duration-700 opacity-100 flex flex-col items-center text-center my-auto w-full">
+      <!-- Date Stamp Badge -->
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-rose-500/30 bg-rose-500/10 text-rose-300 text-xs tracking-[0.2em] uppercase mb-8 font-medium">
+        <span class="w-1.5 h-1.5 rounded-full bg-rose-400 animate-ping"></span>
+        September 6, 2026
+      </div>
+
+      <h1 class="text-5xl sm:text-7xl font-serif font-bold text-white tracking-tight leading-none mb-4">
+        Happy Birthday,<br />
+        <span class="romantic-glow bg-gradient-to-r from-rose-300 via-pink-200 to-rose-400 bg-clip-text text-transparent italic">
+          Soha Anwar
+        </span>
+      </h1>
+
+      <p class="text-slate-400 font-serif text-lg sm:text-xl italic mt-3 mb-10 tracking-wide">
+        "The world became so much brighter today."
+      </p>
+
+      <button onclick="goToStage(2)" class="group px-8 py-3.5 rounded-full bg-gradient-to-r from-rose-500 to-pink-600 font-medium text-sm tracking-wider text-white shadow-lg shadow-rose-500/20 hover:shadow-rose-500/40 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center gap-2">
+        <span>Step Into Your World</span>
+        <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+        </svg>
+      </button>
+    </section>
+
+    <!-- ================= STAGE 2: THREE SPARKS & INTERACTIVE LOVE NOTE ================= -->
+    <section id="stage-2" class="hidden opacity-0 transition-all duration-700 w-full flex-col items-center text-center">
+      <span class="text-[11px] tracking-[0.25em] text-rose-400 uppercase font-semibold mb-2">Three Simple Truths</span>
+      <h2 class="text-3xl sm:text-4xl font-serif text-white mb-8">What You Mean To Me</h2>
+
+      <!-- Minimal 3-Card Highlights -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full mb-8 text-left">
+        <div class="glass-card rounded-2xl p-5">
+          <div class="text-xl mb-3">💫</div>
+          <h3 class="font-serif text-lg font-semibold text-white">Your Smile</h3>
+          <p class="text-slate-400 text-xs leading-relaxed mt-1">Effortlessly turns my darkest days into pure warmth.</p>
+        </div>
+
+        <div class="glass-card rounded-2xl p-5">
+          <div class="text-xl mb-3">🌸</div>
+          <h3 class="font-serif text-lg font-semibold text-white">Your Kindness</h3>
+          <p class="text-slate-400 text-xs leading-relaxed mt-1">A quiet, radiant grace that softens everything around you.</p>
+        </div>
+
+        <div class="glass-card rounded-2xl p-5">
+          <div class="text-xl mb-3">✨</div>
+          <h3 class="font-serif text-lg font-semibold text-white">My Favorite</h3>
+          <p class="text-slate-400 text-xs leading-relaxed mt-1">Out of everyone on this earth, you are my home.</p>
+        </div>
+      </div>
+
+      <!-- One-Tap Love Note Capsule -->
+      <div class="glass-box w-full p-6 rounded-2xl mb-8 border border-white/10 text-center">
+        <p id="love-line" class="font-serif text-lg italic text-rose-300 min-h-[3rem] flex items-center justify-center transition-all duration-300">
+          "Tap below for a little whisper from my heart..."
+        </p>
+        <button onclick="nextLoveLine()" class="mt-3 px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs uppercase tracking-wider text-slate-300 hover:text-white transition-all">
+          Unveil Another Note 💌
+        </button>
+      </div>
+
+      <button onclick="goToStage(3)" class="px-7 py-3 rounded-full bg-slate-800 hover:bg-slate-700 text-xs font-semibold uppercase tracking-widest text-slate-200 hover:text-white transition-all hover:scale-105 active:scale-95">
+        Make Your Wish →
+      </button>
+    </section>
+
+    <!-- ================= STAGE 3: THE CANDLE & WISH CEREMONY ================= -->
+    <section id="stage-3" class="hidden opacity-0 transition-all duration-700 w-full flex-col items-center text-center">
+      <span class="text-[11px] tracking-[0.25em] text-rose-400 uppercase font-semibold mb-2">06 • September • 2026</span>
+      <h2 class="text-3xl sm:text-5xl font-serif text-white mb-2">Make A Wish, Soha</h2>
+      <p class="text-slate-400 text-sm max-w-sm font-serif italic mb-8">
+        Close your eyes, hold your quietest hope, and blow out the candle.
+      </p>
+
+      <!-- Sleek Glowing Minimalist Candle & Cake -->
+      <div class="relative flex flex-col items-center justify-center my-6">
+        <!-- Interactive Flame -->
+        <div id="candle-flame" onclick="blowCandle()" class="cursor-pointer group flex flex-col items-center -mb-2 z-20">
+          <div class="w-6 h-10 rounded-full bg-gradient-to-t from-amber-500 via-orange-400 to-yellow-200 blur-[1px] animate-flicker shadow-[0_0_30px_rgba(251,191,36,0.9)] group-hover:scale-125 transition-transform duration-200"></div>
+          <div class="w-1 h-3 bg-slate-400 mt-0.5 rounded-full"></div>
+        </div>
+        <!-- Smoke effect -->
+        <div id="candle-smoke" class="hidden w-2 h-8 bg-slate-400/40 rounded-full blur-sm -translate-y-4"></div>
+
+        <!-- Pillar -->
+        <div class="w-4 h-16 bg-gradient-to-b from-rose-200 to-rose-400 rounded-t shadow-md z-10"></div>
+
+        <!-- Sleek Minimalist Base -->
+        <div class="w-40 h-14 -mt-2 glass-box rounded-2xl flex items-center justify-center border border-white/20 shadow-2xl">
+          <span class="text-[10px] uppercase tracking-widest text-slate-400 font-mono">Soha Anwar</span>
+        </div>
+      </div>
+
+      <button id="blow-btn" onclick="blowCandle()" class="mt-8 px-6 py-2.5 rounded-full border border-amber-400/30 bg-amber-500/10 text-amber-300 text-xs font-semibold tracking-wider uppercase hover:bg-amber-500/20 transition-all">
+        🕯️ Tap Candle to Blow
+      </button>
+    </section>
+
+    <!-- ================= STAGE 4: THE HEARTFELT FINALE ================= -->
+    <section id="stage-4" class="hidden opacity-0 transition-all duration-700 w-full flex-col items-center text-center">
+      <div class="glass-box w-full max-w-lg p-8 sm:p-10 rounded-3xl border border-white/10 text-center relative overflow-hidden">
+        
+        <span class="text-[11px] tracking-[0.25em] text-rose-400 uppercase font-semibold">Forever & Always</span>
+        <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white mt-2 mb-6">Dearest Soha,</h2>
+
+        <div class="space-y-4 font-serif text-lg sm:text-xl text-slate-300 leading-relaxed italic">
+          <p>
+            Out of eight billion people in this world, my heart found you—and it hasn’t stopped smiling since.
+          </p>
+          <p>
+            May this new year bring you the quiet peace you give to others, endless laughter, and every dream you whisper in secret.
+          </p>
+          <p class="text-white font-sans text-sm not-italic font-semibold pt-3 tracking-wide">
+            Happy Birthday, My Love. ❤️
+          </p>
+          <p class="text-xs text-rose-400/80 font-mono not-italic tracking-widest pt-1">
+            06 • 09 • 2026
+          </p>
+        </div>
+
+        <div class="mt-8 pt-6 border-t border-white/10 flex items-center justify-center gap-4">
+          <button onclick="superCelebration()" class="px-5 py-2 rounded-full bg-gradient-to-r from-rose-500 to-pink-600 text-white text-xs font-medium uppercase tracking-wider hover:scale-105 active:scale-95 transition-all">
+            More Love ✨
+          </button>
+          <button onclick="goToStage(1)" class="text-slate-400 hover:text-white text-xs uppercase tracking-wider transition-colors">
+            Replay ↺
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="relative z-10 py-6 text-center text-[11px] uppercase tracking-widest text-slate-400">
+    Made with all my heart for Soha Anwar
+  </footer>
+
+  <!-- SCRIPT LOGIC -->
+  <script>
+    /* ================= 1. DREAMLIKE AMBIENT SYNTH (Web Audio API) ================= */
+    let audioCtx = null;
+    let isPlaying = false;
+    let masterGain = null;
+    let activeOscs = [];
+
+    // Soothing ethereal chord progression: Fmaj9 -> G6 -> Am7 -> Cmaj7
+    const CHORDS = [
+      [174.61, 261.63, 329.63, 392.00],
+      [196.00, 246.94, 293.66, 392.00],
+      [220.00, 261.63, 329.63, 440.00],
+      [261.63, 329.63, 392.00, 523.25]
+    ];
+    let chordIdx = 0;
+
+    function initAudio() {
+      const AudioContext = window.AudioContext || window.webkitAudioContext;
+      audioCtx = new AudioContext();
+      masterGain = audioCtx.createGain();
+      masterGain.gain.setValueAtTime(0.06, audioCtx.currentTime);
+      masterGain.connect(audioCtx.destination);
+    }
+
+    function playChordCycle() {
+      if (!audioCtx) initAudio();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+
+      activeOscs.forEach(o => {
+        try {
+          o.gain.gain.linearRampToValueAtTime(0.0001, audioCtx.currentTime + 1.2);
+          setTimeout(() => o.stop(), 1200);
+        } catch(e) {}
+      });
+      activeOscs = [];
+
+      const current = CHORDS[chordIdx];
+      chordIdx = (chordIdx + 1) % CHORDS.length;
+
+      current.forEach(f => {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(f, audioCtx.currentTime);
+
+        gain.gain.setValueAtTime(0.0001, audioCtx.currentTime);
+        gain.gain.linearRampToValueAtTime(0.035, audioCtx.currentTime + 1.5);
+
+        osc.connect(gain);
+        gain.connect(masterGain);
+        osc.start();
+        osc.gain = gain;
+        activeOscs.push(osc);
+      });
+
+      if (isPlaying) {
+        setTimeout(playChordCycle, 4200);
+      }
+    }
+
+    function chime(frequency = 659.25) {
+      if (!audioCtx) initAudio();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(frequency, audioCtx.currentTime);
+      gain.gain.setValueAtTime(0.09, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 1.3);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + 1.3);
+    }
+
+    function toggleSound() {
+      const dot = document.getElementById('sound-dot');
+      const label = document.getElementById('sound-label');
+
+      if (!isPlaying) {
+        isPlaying = true;
+        playChordCycle();
+        dot.className = "w-2 h-2 rounded-full bg-rose-400 animate-ping";
+        label.innerText = "Ambient: On";
+      } else {
+        isPlaying = false;
+        activeOscs.forEach(o => o.stop());
+        activeOscs = [];
+        dot.className = "w-2 h-2 rounded-full bg-slate-500";
+        label.innerText = "Ambient: Off";
+      }
+    }
+
+    /* ================= 2. CANVAS: PARTICLES & DRIFTING HEARTS ================= */
+    const canvas = document.getElementById('starfield');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function setCanvasSize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', setCanvasSize);
+    setCanvasSize();
+
+    class Particle {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 1.6 + 0.3;
+        this.speedY = -(Math.random() * 0.3 + 0.1);
+        this.alpha = Math.random() * 0.7 + 0.2;
+        this.isHeart = Math.random() < 0.12; // 12% of particles are mini glowing hearts
+      }
+      update() {
+        this.y += this.speedY;
+        if (this.y < -10) this.y = canvas.height + 10;
+      }
+      draw() {
+        if (this.isHeart) {
+          ctx.fillStyle = `rgba(251, 113, 133, ${this.alpha * 0.7})`;
+          ctx.font = '10px sans-serif';
+          ctx.fillText('♥', this.x, this.y);
+        } else {
+          ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+    }
+
+    function initParticles() {
+      particles = [];
+      for (let i = 0; i < 90; i++) particles.push(new Particle());
+    }
+    initParticles();
+
+    function renderParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(renderParticles);
+    }
+    renderParticles();
+
+    /* ================= 3. STAGE CONTROLLER ================= */
+    let stage = 1;
+    function goToStage(num) {
+      chime(587.33); // D5 chime
+      const current = document.getElementById(`stage-${stage}`);
+      const next = document.getElementById(`stage-${num}`);
+
+      current.classList.add('opacity-0');
+      setTimeout(() => {
+        current.classList.add('hidden');
+        current.classList.remove('flex');
+        
+        next.classList.remove('hidden');
+        next.classList.add('flex');
+        setTimeout(() => {
+          next.classList.remove('opacity-0');
+        }, 40);
+      }, 500);
+
+      stage = num;
+    }
+
+    /* ================= 4. SHORT POETIC LOVE NOTES ================= */
+    const lines = [
+      "\"Soha, you are my favorite thought in the morning and my peace at night.\"",
+      "\"Falling in love with you was effortless. Loving you is my favorite gift.\"",
+      "\"The little way you laugh when you're happy is literally my favorite sound in this world.\"",
+      "\"September 6th will always be my favorite day on the calendar because of you.\""
+    ];
+    let noteIdx = 0;
+
+    function nextLoveLine() {
+      chime(659.25);
+      const el = document.getElementById('love-line');
+      el.style.opacity = '0';
+      setTimeout(() => {
+        el.innerText = lines[noteIdx];
+        el.style.opacity = '1';
+        noteIdx = (noteIdx + 1) % lines.length;
+      }, 200);
+    }
+
+    /* ================= 5. CANDLE BLOW CEREMONY & CONFETTI ================= */
+    function blowCandle() {
+      chime(880); // A5 celebration chime
+      const flame = document.getElementById('candle-flame');
+      const smoke = document.getElementById('candle-smoke');
+      const btn = document.getElementById('blow-btn');
+
+      flame.classList.add('opacity-0', 'scale-50', 'pointer-events-none');
+      smoke.classList.remove('hidden');
+
+      btn.innerText = '✨ Your Wish is Bound to Come True';
+      btn.classList.add('opacity-60', 'pointer-events-none');
+
+      superCelebration();
+
+      setTimeout(() => {
+        goToStage(4);
+      }, 2200);
+    }
+
+    function superCelebration() {
+      if (typeof confetti !== 'function') return;
+
+      const base = { origin: { y: 0.7 }, colors: ['#fb7185', '#f43f5e', '#fda4af', '#fde047'] };
+      confetti({ ...base, particleCount: 60, spread: 45, startVelocity: 40 });
+      confetti({ ...base, particleCount: 70, spread: 80, decay: 0.92 });
+      confetti({ ...base, particleCount: 50, spread: 120, scalar: 1.1 });
+    }
+  </script>
+</body>
+</html>
